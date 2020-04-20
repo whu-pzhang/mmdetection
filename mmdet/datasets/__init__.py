@@ -9,9 +9,25 @@ from .voc import VOCDataset
 from .wider_face import WIDERFaceDataset
 from .xml_style import XMLDataset
 
+from .dior_vehicle import DiorVehicleDataset
+from .dota import DotaDataset
+from .missile_site import MissileSiteDataset
+
 __all__ = [
-    'CustomDataset', 'XMLDataset', 'CocoDataset', 'VOCDataset',
-    'CityscapesDataset', 'GroupSampler', 'DistributedGroupSampler',
-    'build_dataloader', 'ConcatDataset', 'RepeatDataset', 'WIDERFaceDataset',
-    'DATASETS', 'build_dataset'
+    'CustomDataset',
+    'XMLDataset',
+    'CocoDataset',
+    'VOCDataset',
+    'CityscapesDataset',
+    'GroupSampler',
+    'DistributedGroupSampler',
+    'build_dataloader',
+    'ConcatDataset',
+    'RepeatDataset',
+    'WIDERFaceDataset',
+    'DATASETS',
+    'build_dataset',
+    'DiorVehicleDataset',
+    'DotaDataset',
+    'MissileSiteDataset',
 ]
