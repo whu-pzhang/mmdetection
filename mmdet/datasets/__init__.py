@@ -13,6 +13,7 @@ from .dior_vehicle import DiorVehicleDataset
 from .dota import DotaDataset
 from .missile_site import MissileSiteDataset
 from .dota_vehicle import DotaVehicleDataset
+from .ucas_aod import AodCarDataset
 
 __all__ = [
     'CustomDataset',
@@ -32,4 +33,5 @@ __all__ = [
     'DotaDataset',
     'MissileSiteDataset',
     'DotaVehicleDataset',
+    'AodCarDataset',
 ]
