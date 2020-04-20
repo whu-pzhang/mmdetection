@@ -12,6 +12,7 @@ from .xml_style import XMLDataset
 from .dior_vehicle import DiorVehicleDataset
 from .dota import DotaDataset
 from .missile_site import MissileSiteDataset
+from .dota_vehicle import DotaVehicleDataset
 
 __all__ = [
     'CustomDataset',
@@ -30,4 +31,5 @@ __all__ = [
     'DiorVehicleDataset',
     'DotaDataset',
     'MissileSiteDataset',
+    'DotaVehicleDataset',
 ]
