@@ -40,8 +40,7 @@ def parse_losses(losses):
         elif isinstance(loss_value, list):
             log_vars[loss_name] = sum(_loss.mean() for _loss in loss_value)
         else:
-            raise TypeError(
-                '{} is not a tensor or list of tensors'.format(loss_name))
+            raise TypeError(f'{loss_name} is not a tensor or list of tensors')
 
     loss = sum(_value for _key, _value in log_vars.items() if 'loss' in _key)
 
@@ -95,7 +94,7 @@ def train_detector(model,
     data_loaders = [
         build_dataloader(
             ds,
-            cfg.data.imgs_per_gpu,
+            cfg.data.samples_per_gpu,
             cfg.data.workers_per_gpu,
             # cfg.gpus will be ignored if distributed
             len(cfg.gpu_ids),
@@ -134,14 +133,15 @@ def train_detector(model,
     if fp16_cfg is not None:
         optimizer_config = Fp16OptimizerHook(
             **cfg.optimizer_config, **fp16_cfg, distributed=distributed)
-    elif distributed:
+    elif distributed and 'type' not in cfg.optimizer_config:
         optimizer_config = DistOptimizerHook(**cfg.optimizer_config)
     else:
         optimizer_config = cfg.optimizer_config
 
     # register hooks
     runner.register_training_hooks(cfg.lr_config, optimizer_config,
-                                   cfg.checkpoint_config, cfg.log_config)
+                                   cfg.checkpoint_config, cfg.log_config,
+                                   cfg.get('momentum_config', None))
     if distributed:
         runner.register_hook(DistSamplerSeedHook())
 
@@ -150,7 +150,7 @@ def train_detector(model,
         val_dataset = build_dataset(cfg.data.val, dict(test_mode=True))
         val_dataloader = build_dataloader(
             val_dataset,
-            imgs_per_gpu=1,
+            samples_per_gpu=1,
             workers_per_gpu=cfg.data.workers_per_gpu,
             dist=distributed,
             shuffle=False)
