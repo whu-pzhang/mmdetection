@@ -15,10 +15,21 @@ from .dota_vehicle import DotaVehicleDataset
 from .ucas_aod import AodCarDataset
 
 __all__ = [
-    'CustomDataset', 'XMLDataset', 'CocoDataset', 'VOCDataset',
-    'CityscapesDataset', 'GroupSampler', 'DistributedGroupSampler',
-    'DistributedSampler', 'build_dataloader', 'ConcatDataset', 'RepeatDataset',
-    'WIDERFaceDataset', 'DATASETS', 'PIPELINES', 'build_dataset'
+    'CustomDataset',
+    'XMLDataset',
+    'CocoDataset',
+    'VOCDataset',
+    'CityscapesDataset',
+    'GroupSampler',
+    'DistributedGroupSampler',
+    'DistributedSampler',
+    'build_dataloader',
+    'ConcatDataset',
+    'RepeatDataset',
+    'WIDERFaceDataset',
+    'DATASETS',
+    'PIPELINES',
+    'build_dataset',
     'DiorVehicleDataset',
     'DotaDataset',
     'MissileSiteDataset',

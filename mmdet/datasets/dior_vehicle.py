@@ -1,4 +1,4 @@
-from .registry import DATASETS
+from .builder import DATASETS
 from .coco import CocoDataset
 
 
